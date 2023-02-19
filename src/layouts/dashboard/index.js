@@ -2,6 +2,7 @@
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
 import axios from "axios";
+
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -37,7 +38,34 @@ function Dashboard() {
   const [temp, settemp] = useState("");
   const [mintemp, setmintemp] = useState("");
   const [maxtemp, setmaxtemp] = useState("");
+  const [graphData,setGraphData] = useState([])
+  const getLastThree = async () => {
+    const response = await axios.get("http://localhost:8080");
+    const data = response.data;
+    const finalData= [data[data.length-3],data[data.length-2],data[data.length-1]];
+    let gradientLineChartData = {
+      labels: [  finalData[0].dateTime.split(' ')[1], finalData[1].dateTime.split(' ')[1], finalData[2].dateTime.split(' ')[1]],
+      datasets: [
+        {
+          label: "Temp",
+          color: "info",
+          data: [  finalData[0].currentTemp, finalData[1].currentTemp, finalData[2].currentTemp],
+        },
+        {
+          label: "humidity",
+          color: "dark",
+          data: [  finalData[0].humidity, finalData[1].humidity, finalData[2].humidity],
+        },{
+          label: "pressure",
+          color: "dark",
+          data: [  finalData[0].pressure, finalData[1].pressure, finalData[2].pressure],
+        },
+      ],
+    };
+    console.log(gradientLineChartData);
+    setGraphData(gradientLineChartData);
 
+  }
   const todayWeather = async () => {
     try {
       const response = await axios.get("http://localhost:8080/last-weather");
@@ -60,6 +88,7 @@ function Dashboard() {
   
   useEffect(() => {
     todayWeather();
+    getLastThree();
   }, [])
   
   return (
@@ -114,22 +143,20 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} lg={7}>
               <GradientLineChart
-                title="Sales Overview"
+                title="Real Time Change"
                 description={
                   <SoftBox display="flex" alignItems="center">
                     <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
                       <Icon className="font-bold">arrow_upward</Icon>
                     </SoftBox>
                     <SoftTypography variant="button" color="text" fontWeight="medium">
-                      4% more{" "}
-                      <SoftTypography variant="button" color="text" fontWeight="regular">
-                        in 2021
-                      </SoftTypography>
+                    °C{" "}
+                     
                     </SoftTypography>
                   </SoftBox>
                 }
                 height="20.25rem"
-                chart={gradientLineChartData}
+                chart={graphData}
               />
             </Grid>
           </Grid>

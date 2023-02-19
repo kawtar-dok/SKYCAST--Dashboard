@@ -1,15 +1,19 @@
 const gradientLineChartData = {
-  labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  labels: [  "17:55", "18:00", "18:05"],
   datasets: [
     {
-      label: "Mobile apps",
+      label: "Temp",
       color: "info",
-      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+      data: [0,5,10,15,20,25,30,35,40,45],
     },
     {
-      label: "Websites",
+      label: "humidity",
       color: "dark",
-      data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+      data: [ 340, 230, 400],
+    },{
+      label: "pressure",
+      color: "dark",
+      data: [30,240, 300],
     },
   ],
 };
