@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
-import ExpertApp from "ExpertApp";
 // Soft UI Dashboard React Context Provider
 import { SoftUIControllerProvider } from "context";
 
@@ -26,7 +25,7 @@ if (!user) {
   root.render(
     <BrowserRouter>
       <SoftUIControllerProvider>
-        {JSON.parse(localStorage.getItem("user")).role === "Client" ? <App /> : <ExpertApp />}
+        {JSON.parse(localStorage.getItem("user")).role === "Client" ? <App /> : <App />}
       </SoftUIControllerProvider>
     </BrowserRouter>
   );
