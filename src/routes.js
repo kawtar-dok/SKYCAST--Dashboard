@@ -29,9 +29,9 @@ const routes = [
  
   {
     type: "collapse",
-    name: "Formation",
-    key: "formation",
-    route: "/formation",
+    name: "Historique",
+    key: "history",
+    route: "/history",
     icon: <Office size="12px" />,
     component: <Formation />,
     noCollapse: true,

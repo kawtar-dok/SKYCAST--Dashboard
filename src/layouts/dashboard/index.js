@@ -105,7 +105,6 @@ function Dashboard() {
                 icon={{ color: "light", component: favicon }}
               />
             </Grid>
-          
             <Grid item xs={12} sm={6} xl={6}>
               <MiniStatisticsCard
                 title={{ text: "today's Max temperature" }}
@@ -118,13 +117,13 @@ function Dashboard() {
           </Grid>
         </SoftBox>
 
-        <SoftBox pt={2} px={0}>
+        <SoftBox pt={0} px={0}>
           <SoftTypography variant="h4" fontWeight="medium">
             Today
           </SoftTypography>
         </SoftBox>
         <SoftBox mb={3} pt={1}>
-          <Grid container spacing={3}>
+          <Grid container spacing={4}>
             <Grid item xs={12} lg={4}>
               <DefaultProjectCard
                 image={img}
@@ -141,7 +140,7 @@ function Dashboard() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} lg={7}>
+            <Grid item xs={12} lg={7.5}>
               <GradientLineChart
                 title="Real Time Change"
                 description={
@@ -155,7 +154,7 @@ function Dashboard() {
                     </SoftTypography>
                   </SoftBox>
                 }
-                height="20.25rem"
+                height="17.5rem"
                 chart={graphData}
               />
             </Grid>
