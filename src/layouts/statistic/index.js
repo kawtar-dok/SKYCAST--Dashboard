@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 // Soft UI Dashboard React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+
 import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 
 // Soft UI Dashboard React base styles
@@ -24,8 +25,8 @@ function Formation() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
   //yyyy-MM-ddThh:mm
-  const [dateDepart, setDateDepart] = useState("2023-01-01T23:11");
-  const [dateFin, setDateFin] = useState("2023-12-01T23:11");
+  const [dateDepart, setDateDepart] = useState("2023-01-29T23:00");
+  const [dateFin, setDateFin] = useState("2023-02-29T23:00");
   const [graphData, setGraphData] = useState([]);
   const [csvData, setCsvData] = useState([]);
   const getData = async () => {
